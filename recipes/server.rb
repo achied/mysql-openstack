@@ -33,7 +33,7 @@ mysql_network = node["mysql"]["services"]["db"]["network"]
 if platform?(%w{redhat centos amazon scientific})
     node.override["mysql"]["tunable"]["innodb_adaptive_flushing"] = false
 end
-node.set["mysql"]["bind_address"] = bind_ip = "0.0.0.0"
+bind_ip = node["mysql"]["bind_address"]
 
 # search for first_master id (1).  If found, assume we are the second server
 # and configure accordingly.  If not, assume we are the first
